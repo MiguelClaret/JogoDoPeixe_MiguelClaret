@@ -41,12 +41,7 @@ function preaload() {
 // função qual criamos/colocamos na tela os elementos do game
 function create() {
 
-    // verificação da orientação do dispositivo
-    if (game.scale.orientation === Phaser.Scale.LANDSCAPE) {
-        this.add.image(400, 300, 'mar1');
-    } else if (game.scale.orientation === Phaser.Scale.PORTRAIT) {
-        this.add.image(400, 300, 'mar2');   
-    }
+
 
     this.add.image(400, 525, 'logo').setScale(0.5); // add a logo e defini seu lugar
 
@@ -76,5 +71,13 @@ function update() {
     peixinho.y = this.input.y; // código qual diz para o peixe seguir o eixo y do mouse
 
     peixinho2.x = this.input.x; // código qual diz para o peixe seguir o eixo x do mouse
-    peixinho2.y = this.input.y; 
+    peixinho2.y = this.input.y;
+    
+    // verificação da orientação do dispositivo
+    if (game.scale.orientation === Phaser.Scale.LANDSCAPE) {
+        this.add.image(400, 300, 'mar1');
+    } else if (game.scale.orientation === Phaser.Scale.PORTRAIT) {
+        this.add.image(400, 300, 'mar2');
+    }
+
 }
