@@ -41,6 +41,12 @@ function preaload() {
 // função qual criamos/colocamos na tela os elementos do game
 function create() {
 
+    // verificação da orientação do dispositivo
+    if (game.scale.orientation === Phaser.Scale.LANDSCAPE) {
+        this.add.image(400, 300, 'mar1');
+    } else if (game.scale.orientation === Phaser.Scale.PORTRAIT) {
+        this.add.image(400, 300, 'mar2');   
+    }
 
     this.add.image(400, 525, 'logo').setScale(0.5); // add a logo e defini seu lugar
 
@@ -56,11 +62,9 @@ function create() {
     game.scale.on('orientationchange', function (orientation) {
         if (orientation === Phaser.Scale.PORTRAIT) {
             console.log('PORTRAIT')
-            this.add.image(400, 300, 'mar2'); 
         }
         if (orientation === Phaser.Scale.LANDSCAPE) {
             console.log('LANDSCAPE')
-            this.add.image(400, 300, 'mar1');
         }
     });
 
