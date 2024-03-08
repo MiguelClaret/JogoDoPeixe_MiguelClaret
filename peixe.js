@@ -25,9 +25,9 @@ var peixinho, peixinho2;
 
 //função qual carrega os recursos do game
 function preaload() {
-    this.load.image('mar', 'assets/bg_azul-claro.png'); // add o arquivo do fundo do mar
+    this.load.image('mar1', 'assets/bg_azul-claro.png'); // add o arquivo do fundo do mar
 
-    this.load.image('mar', 'assets/bg_azul-escuro.png');
+    this.load.image('mar2', 'assets/bg_azul-escuro.png');
 
     this.load.image('logo', 'assets/logo-inteli_branco.png'); // add o arquivo da log
 
@@ -40,14 +40,13 @@ function preaload() {
 }
 // função qual criamos/colocamos na tela os elementos do game
 function create() {
+
     // verificação da orientação do dispositivo
     if (game.scale.orientation === Phaser.Scale.LANDSCAPE) {
-        this.add.image(400, 300, 'mar');
+        this.add.image(400, 300, 'mar1');
     } else if (game.scale.orientation === Phaser.Scale.PORTRAIT) {
-        this.add.image(400, 300, 'mar-claro');
+        this.add.image(400, 300, 'mar2');
     }
-
-    this.add.image(400, 300, 'mar'); // add o fundo
 
     this.add.image(400, 525, 'logo').setScale(0.5); // add a logo e defini seu lugar
 
@@ -58,6 +57,7 @@ function create() {
     } else {
 
         peixinho = this.add.image(400, 300, 'peixeBaiacu');
+        this.add.image(400, 300, 'mar2');
     }
 
     game.scale.on('orientationchange', function (orientation) {
