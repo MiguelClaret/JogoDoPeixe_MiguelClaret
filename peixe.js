@@ -21,7 +21,7 @@ var config = {
 // defini a variável game e "guarda" nela as configurações que colocamos no config
 var game = new Phaser.Game(config);
 // defini a variável do peixe
-var peixinho, peixinho2;
+var peixinho;
 
 //função qual carrega os recursos do game
 function preaload() {
@@ -53,24 +53,25 @@ function create() {
     this.add.image(400, 590, 'tartaruga').setScale(0.5); // add a tartaruga e defini seu lugar
 
     
-
+    // identifica em qual a orientação o dispositivo usada está
     game.scale.on('orientationchange', function (orientation) {
         if (orientation === Phaser.Scale.PORTRAIT) {
-            console.log('PORTRAIT')
+            console.log('PORTRAIT') // tela está em pé
         }
         if (orientation === Phaser.Scale.LANDSCAPE) {
-            console.log('LANDSCAPE')
+            console.log('LANDSCAPE') // tela está deitada
         }
     });
 
 }
 // função qual fica em looping durante todo o game
 function update() {
+    //verifica qual a dispositivo o player está jogando
     if (game.device.os.desktop) {
-        peixinho = this.add.image(400, 300, 'peixeRosa');
+        peixinho = this.add.image(400, 300, 'peixeRosa'); //desktop
     } else {
 
-        peixinho = this.add.image(400, 300, 'peixeBaiacu');
+        peixinho = this.add.image(400, 300, 'peixeBaiacu'); // celular
     }
 
     peixinho.x = this.input.x; // código qual diz para o peixe seguir o eixo x do mouse
