@@ -45,7 +45,7 @@ function create() {
     if (game.scale.orientation === Phaser.Scale.LANDSCAPE) {
         this.add.image(400, 300, 'mar1');
     } else if (game.scale.orientation === Phaser.Scale.PORTRAIT) {
-        this.add.image(400, 300, 'mar2');
+        this.add.image(400, 300, 'mar2');   
     }
 
     this.add.image(400, 525, 'logo').setScale(0.5); // add a logo e defini seu lugar
@@ -57,7 +57,6 @@ function create() {
     } else {
 
         peixinho = this.add.image(400, 300, 'peixeBaiacu');
-        this.add.image(400, 300, 'mar2');
     }
 
     game.scale.on('orientationchange', function (orientation) {
