@@ -27,6 +27,8 @@ var peixinho, peixinho2;
 function preaload() {
     this.load.image('mar', 'assets/bg_azul-claro.png'); // add o arquivo do fundo do mar
 
+    this.load.image('mar', 'assets/bg_azul-escuro.png');
+
     this.load.image('logo', 'assets/logo-inteli_branco.png'); // add o arquivo da log
 
     this.load.image('peixeBaiacu', 'assets/peixes/baiacu.png'); // add o arquivo do peixe
@@ -38,7 +40,7 @@ function preaload() {
 }
 // função qual criamos/colocamos na tela os elementos do game
 function create() {
-
+    // verificação da orientação do dispositivo
     if (game.scale.orientation === Phaser.Scale.LANDSCAPE) {
         this.add.image(400, 300, 'mar');
     } else if (game.scale.orientation === Phaser.Scale.PORTRAIT) {
