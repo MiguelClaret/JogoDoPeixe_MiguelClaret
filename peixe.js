@@ -11,37 +11,64 @@ var config = {
         create: create,
         update: update
 
-    }
+    },
+
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH
+    },
 };
 // defini a variável game e "guarda" nela as configurações que colocamos no config
 var game = new Phaser.Game(config);
 // defini a variável do peixe
-var peixinho;
- 
+var peixinho, peixinho2;
+
 //função qual carrega os recursos do game
-function preaload() { 
+function preaload() {
     this.load.image('mar', 'assets/bg_azul-claro.png'); // add o arquivo do fundo do mar
 
     this.load.image('logo', 'assets/logo-inteli_branco.png'); // add o arquivo da log
 
-    this.load.image('peixe', 'assets/peixes/baiacu.png'); // add o arquivo do peixe
+    this.load.image('peixeBaiacu', 'assets/peixes/baiacu.png'); // add o arquivo do peixe
+
+    this.load.image('peixeRosa', 'assets/peixes/peixinho_azul.png');// add o arquivo do peixe
 
     this.load.image('tartaruga', 'assets/peixes/tartaruga.png'); // add o arquivo da tartaruga
 
 }
- // função qual criamos/colocamos na tela os elementos do game
+// função qual criamos/colocamos na tela os elementos do game
 function create() {
+
+    if (game.scale.orientation === Phaser.Scale.LANDSCAPE) {
+        this.add.image(400, 300, 'mar');
+    } else if (game.scale.orientation === Phaser.Scale.PORTRAIT) {
+        this.add.image(400, 300, 'mar-claro');
+    }
+
     this.add.image(400, 300, 'mar'); // add o fundo
 
     this.add.image(400, 525, 'logo').setScale(0.5); // add a logo e defini seu lugar
 
     this.add.image(400, 590, 'tartaruga').setScale(0.5); // add a tartaruga e defini seu lugar
 
-    peixinho = this.add.image(400, 300, 'peixe'); // add o peixe e defini seu spaw
+    if (game.device.os.desktop) {
+        peixinho = this.add.image(400, 300, 'peixeRosa');
+    } else {
 
-    
+        peixinho = this.add.image(400, 300, 'peixeBaiacu');
+    }
+
+    game.scale.on('orientationchange', function (orientation) {
+        if (orientation === Phaser.Scale.PORTRAIT) {
+            console.log('PORTRAIT')
+        }
+        if (orientation === Phaser.Scale.LANDSCAPE) {
+            console.log('LANDSCAPE')
+        }
+    });
+
 }
- // função qual fica em looping durante todo o game
+// função qual fica em looping durante todo o game
 function update() {
 
     peixinho.x = this.input.x; // código qual diz para o peixe seguir o eixo x do mouse
