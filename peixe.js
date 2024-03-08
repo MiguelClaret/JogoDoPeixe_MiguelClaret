@@ -52,12 +52,7 @@ function create() {
 
     this.add.image(400, 590, 'tartaruga').setScale(0.5); // add a tartaruga e defini seu lugar
 
-    if (game.device.os.desktop) {
-        peixinho = this.add.image(400, 300, 'peixeRosa');
-    } else {
-
-        peixinho = this.add.image(400, 300, 'peixeBaiacu');
-    }
+    
 
     game.scale.on('orientationchange', function (orientation) {
         if (orientation === Phaser.Scale.PORTRAIT) {
@@ -71,6 +66,12 @@ function create() {
 }
 // função qual fica em looping durante todo o game
 function update() {
+    if (game.device.os.desktop) {
+        peixinho = this.add.image(400, 300, 'peixeRosa');
+    } else {
+
+        peixinho = this.add.image(400, 300, 'peixeBaiacu');
+    }
 
     peixinho.x = this.input.x; // código qual diz para o peixe seguir o eixo x do mouse
     peixinho.y = this.input.y; // código qual diz para o peixe seguir o eixo y do mouse
