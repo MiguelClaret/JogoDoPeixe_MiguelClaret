@@ -56,7 +56,7 @@ function create() {
         peixinho = this.add.image(400, 300, 'peixeRosa');
     } else {
 
-        peixinho2 = this.add.image(400, 300, 'peixeBaiacu');
+        peixinho = this.add.image(400, 300, 'peixeBaiacu');
     }
 
     game.scale.on('orientationchange', function (orientation) {
@@ -74,9 +74,5 @@ function update() {
 
     peixinho.x = this.input.x; // código qual diz para o peixe seguir o eixo x do mouse
     peixinho.y = this.input.y; // código qual diz para o peixe seguir o eixo y do mouse
-
-    peixinho2.x = this.input.x; // código qual diz para o peixe seguir o eixo x do mouse
-    peixinho2.y = this.input.y; 
-
     
 }
